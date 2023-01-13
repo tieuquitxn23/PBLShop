@@ -9,6 +9,7 @@ namespace PBLShop.Model.Models
     {
         [Key]
         public Guid ID { set; get; }
+
         [Required]
         public DateTime VisitedDate { set; get; }
 
