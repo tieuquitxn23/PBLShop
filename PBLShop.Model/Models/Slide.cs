@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PBLShop.Model.Models
 {
-    [Table("Menus")]
-    public class Menu
+    [Table("Slides")]
+    public class Slide
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -13,22 +13,15 @@ namespace PBLShop.Model.Models
         [Required]
         public string Name { set; get; }
 
+        public string Description { set; get; }
+
         [Required]
-        [MaxLength(256)]
+        public string Image { set; get; }
+
+        [Required]
         public string URL { set; get; }
 
         public int DisplayOrder { set; get; }
-
-        [Required]
-        public int GroupID { set; get; }
-
-        [ForeignKey("GroupID")]
-        public virtual MenuGroup MenuGroup { set; get; }
-
-        [MaxLength(10)]
-        public string Target { set; get; }
-
-        [Required]
         public bool Status { set; get; }
     }
 }

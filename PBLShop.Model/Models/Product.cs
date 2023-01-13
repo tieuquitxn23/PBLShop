@@ -1,11 +1,6 @@
 ﻿using PBLShop.Model.Abstract;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace PBLShop.Model.Models
@@ -16,10 +11,13 @@ namespace PBLShop.Model.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { set; get; }
+
         [Required]
         public string Name { set; get; }
+
         [Required]
         public string Alias { set; get; }
+
         public int CategoryID { set; get; }
         public string Image { set; get; }
         public XElement MoreImage { set; get; }
