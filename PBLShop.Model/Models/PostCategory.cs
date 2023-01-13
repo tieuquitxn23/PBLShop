@@ -1,11 +1,7 @@
 ﻿using PBLShop.Model.Abstract;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PBLShop.Model.Models
 {
@@ -21,7 +17,7 @@ namespace PBLShop.Model.Models
         public string Name { set; get; }
 
         [Required]
-        [Column(TypeName ="varchar")]
+        [Column(TypeName = "varchar")]
         [MaxLength(256)]
         public string Alias { set; get; }
 

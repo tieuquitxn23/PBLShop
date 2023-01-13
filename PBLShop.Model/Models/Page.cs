@@ -15,7 +15,7 @@ namespace PBLShop.Model.Models
         [MaxLength(256)]
         public string Name { set; get; }
 
-        [Column(TypeName ="varchar")]
+        [Column(TypeName = "varchar")]
         [MaxLength(256)]
         [Required]
         public string Alias { set; get; }
