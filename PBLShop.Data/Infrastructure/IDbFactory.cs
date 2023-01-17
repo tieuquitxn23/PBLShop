@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PBLShop.Data
+namespace PBLShop.Data.Infrastructure
 {
-    public class Class1
+    public interface IDbFactory : IDisposable
     {
+        PBLShopDbContext Init();
     }
 }
