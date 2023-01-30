@@ -21,9 +21,12 @@ namespace PBLShop.Model.Models
         public string Image { set; get; }
 
         [MaxLength(256)]
-        public string URL { set; get; }
+        public string Url { set; get; }
 
         public int? DisplayOrder { set; get; }
+
         public bool Status { set; get; }
+
+        public string Content { set; get; }
     }
 }

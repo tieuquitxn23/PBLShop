@@ -27,9 +27,11 @@ namespace PBLShop.Model.Models
         public string Email { set; get; }
 
         [MaxLength(50)]
-        public string Facebook { set; get; }
+        public string Yahoo { set; get; }
 
         [MaxLength(50)]
+        public string Facebook { set; get; }
+
         public bool Status { set; get; }
 
         public int? DisplayOrder { set; get; }

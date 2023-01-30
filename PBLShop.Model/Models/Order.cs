@@ -32,14 +32,17 @@ namespace PBLShop.Model.Models
         [MaxLength(256)]
         public string CustomerMessage { set; get; }
 
-        public DateTime? CreatedDate { set; get; }
-        public string CreatedBy { set; get; }
-
         [MaxLength(256)]
         public string PaymentMethod { set; get; }
 
+        public DateTime? CreatedDate { set; get; }
+        public string CreatedBy { set; get; }
         public string PaymentStatus { set; get; }
         public bool Status { set; get; }
+
+        [StringLength(128)]
+        [Column(TypeName = "nvarchar")]
+        public string CustomerId { set; get; }
 
         public virtual IEnumerable<OrderDetail> OrderDetails { set; get; }
     }
