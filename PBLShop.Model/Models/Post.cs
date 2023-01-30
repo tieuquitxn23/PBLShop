@@ -1,6 +1,8 @@
-﻿using PBLShop.Model.Abstract;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using PBLShop.Model.Abstract;
 
 namespace PBLShop.Model.Models
 {
@@ -15,16 +17,16 @@ namespace PBLShop.Model.Models
         [MaxLength(256)]
         public string Name { set; get; }
 
-        [Column(TypeName = "varchar")]
         [Required]
         [MaxLength(256)]
-        public int Alias { set; get; }
+        [Column(TypeName = "varchar")]
+        public string Alias { set; get; }
 
         [Required]
         public int CategoryID { set; get; }
 
         [MaxLength(256)]
-        public string Imgae { set; get; }
+        public string Image { set; get; }
 
         [MaxLength(500)]
         public string Description { set; get; }
@@ -37,5 +39,7 @@ namespace PBLShop.Model.Models
 
         [ForeignKey("CategoryID")]
         public virtual PostCategory PostCategory { set; get; }
+
+        public virtual IEnumerable<PostTag> PostTags { set; get; }
     }
 }
