@@ -13,7 +13,7 @@ namespace PBLShop.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202301300854483_InitialDB"; }
+            get { return "202302030239102_InitialDB"; }
         }
         
         string IMigrationMetadata.Source
