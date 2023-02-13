@@ -1,7 +1,7 @@
-﻿using PBLShop.Model.Abstract;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using PBLShop.Model.Abstract;
 
 namespace PBLShop.Model.Models
 {

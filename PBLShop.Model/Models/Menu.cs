@@ -11,13 +11,14 @@ namespace PBLShop.Model.Models
         public int ID { set; get; }
 
         [Required]
+        [MaxLength(50)]
         public string Name { set; get; }
 
         [Required]
         [MaxLength(256)]
         public string URL { set; get; }
 
-        public int DisplayOrder { set; get; }
+        public int? DisplayOrder { set; get; }
 
         [Required]
         public int GroupID { set; get; }
@@ -28,7 +29,6 @@ namespace PBLShop.Model.Models
         [MaxLength(10)]
         public string Target { set; get; }
 
-        [Required]
         public bool Status { set; get; }
     }
 }

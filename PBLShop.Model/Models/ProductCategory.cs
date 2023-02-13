@@ -1,7 +1,7 @@
-﻿using PBLShop.Model.Abstract;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using PBLShop.Model.Abstract;
 
 namespace PBLShop.Model.Models
 {
@@ -22,14 +22,14 @@ namespace PBLShop.Model.Models
 
         [MaxLength(500)]
         public string Description { set; get; }
-
         public int? ParentID { set; get; }
         public int? DisplayOrder { set; get; }
 
         [MaxLength(256)]
         public string Image { set; get; }
 
-        public bool? Homeflag { set; get; }
+        public bool? HomeFlag { set; get; }
+
         public virtual IEnumerable<Product> Products { set; get; }
     }
 }

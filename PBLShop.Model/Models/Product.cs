@@ -1,11 +1,14 @@
-﻿using PBLShop.Model.Abstract;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;
+using PBLShop.Model.Abstract;
 
 namespace PBLShop.Model.Models
 {
     [Table("Products")]
+
     public class Product : Auditable
     {
         [Key]
@@ -26,20 +29,32 @@ namespace PBLShop.Model.Models
         [MaxLength(256)]
         public string Image { set; get; }
 
-        public XElement MoreImage { set; get; }
+        [Column(TypeName = "xml")]
+        public string MoreImages { set; get; }
+
         public decimal Price { set; get; }
+
         public decimal? PromotionPrice { set; get; }
+
         public int? Warranty { set; get; }
 
         [MaxLength(500)]
         public string Description { set; get; }
-
         public string Content { set; get; }
-        public bool? Homeflag { set; get; }
-        public bool? Hotflag { set; get; }
-        public int? Viewcount { set; get; }
+
+        public bool? HomeFlag { set; get; }
+        public bool? HotFlag { set; get; }
+        public int? ViewCount { set; get; }
+
+        public string Tags { set; get; }
+
+        public int Quantity { set; get; }
+
+        public decimal OriginalPrice { set; get; }
 
         [ForeignKey("CategoryID")]
         public virtual ProductCategory ProductCategory { set; get; }
+
+        public virtual IEnumerable<ProductTag> ProductTags { set; get; }
     }
 }
