@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PBLShop.Data.Infrastructure;
+﻿using PBLShop.Data.Infrastructure;
 using PBLShop.Model.Models;
 
 namespace PBLShop.Data.Repositories
