@@ -8,7 +8,7 @@ namespace PBLShop.Data.Infrastructure
 {
     public abstract class RepositoryBase<T> : IRepository<T> where T : class
     {
-        #region 
+        #region
 
         private PBLShopDbContext dataContext;
         private readonly IDbSet<T> dbSet;
@@ -24,7 +24,9 @@ namespace PBLShop.Data.Infrastructure
             get { return dataContext ?? (dataContext = DbFactory.Init()); }
         }
 
-        #endregion 
+        #endregion
+
+
 
         protected RepositoryBase(IDbFactory dbFactory)
         {
@@ -32,7 +34,7 @@ namespace PBLShop.Data.Infrastructure
             dbSet = DbContext.Set<T>();
         }
 
-        #region 
+        #region
 
         public virtual T Add(T entity)
         {
