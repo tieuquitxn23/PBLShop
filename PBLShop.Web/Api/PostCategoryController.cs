@@ -1,6 +1,9 @@
-﻿using PBLShop.Model.Models;
+﻿using AutoMapper;
+using PBLShop.Model.Models;
 using PBLShop.Service;
 using PBLShop.Web.Infrastructure.Core;
+using PBLShop.Web.Infrastructure.Extensions;
+using PBLShop.Web.Models;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
@@ -23,22 +26,18 @@ namespace PBLShop.Web.Api
         {
             return CreateHttpResponse(request, () =>
             {
-                HttpResponseMessage response = null;
-                if (ModelState.IsValid)
-                {
-                    request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    var listCategory = _postCategoryService.GetAll();
+                var listCategory = _postCategoryService.GetAll();
 
-                    response = request.CreateResponse(HttpStatusCode.OK, listCategory);
-                }
+                var listPostCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(listCategory);
+
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
+
                 return response;
             });
         }
 
-        public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
+        [Route("Add")]
+        public HttpResponseMessage Post(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -49,7 +48,9 @@ namespace PBLShop.Web.Api
                 }
                 else
                 {
-                     var category = _postCategoryService.Add(postCategory);
+                    PostCategory newPostCategory = new PostCategory();
+                    newPostCategory.UpdatePostCategory(postCategoryVm);
+                     var category = _postCategoryService.Add(newPostCategory);
                     _postCategoryService.Save();
 
                     response = request.CreateResponse(HttpStatusCode.Created, category);
@@ -58,7 +59,8 @@ namespace PBLShop.Web.Api
             });
         }
 
-        public HttpResponseMessage Put(HttpRequestMessage request, PostCategory postCategory)
+        [Route("update")]
+        public HttpResponseMessage Put(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -69,7 +71,9 @@ namespace PBLShop.Web.Api
                 }
                 else
                 {
-                    _postCategoryService.Update(postCategory);
+                    var postCategoryDb = _postCategoryService.GetById(postCategoryVm.ID);
+                    postCategoryDb.UpdatePostCategory(postCategoryVm);
+                    _postCategoryService.Update(postCategoryDb);
                     _postCategoryService.Save();
 
                     response = request.CreateResponse(HttpStatusCode.OK);

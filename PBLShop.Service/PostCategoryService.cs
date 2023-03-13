@@ -1,7 +1,8 @@
-﻿using PBLShop.Data.Infrastructure;
+﻿using System;
+using System.Collections.Generic;
+using PBLShop.Data.Infrastructure;
 using PBLShop.Data.Repositories;
 using PBLShop.Model.Models;
-using System.Collections.Generic;
 
 namespace PBLShop.Service
 {
@@ -15,7 +16,7 @@ namespace PBLShop.Service
 
         IEnumerable<PostCategory> GetAll();
 
-        IEnumerable<PostCategory> GetAllByPartentId(int parentId);
+        IEnumerable<PostCategory> GetAllByParentId(int parentId);
 
         PostCategory GetById(int id);
 
@@ -48,7 +49,7 @@ namespace PBLShop.Service
             return _postCategoryRepository.GetAll();
         }
 
-        public IEnumerable<PostCategory> GetAllByPartentId(int parentId)
+        public IEnumerable<PostCategory> GetAllByParentId(int parentId)
         {
             return _postCategoryRepository.GetMulti(x => x.Status && x.ParentID == parentId);
         }
